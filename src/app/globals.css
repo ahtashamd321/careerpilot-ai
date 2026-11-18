@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { background: #000; color: #E6F1F4; }
+body { font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, .font-display { font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.01em; }
+
+:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; border-radius: 6px; }
+
+@layer components {
+  .panel { @apply rounded-panel border border-line bg-panel; }
+  .field { @apply w-full rounded-lg border border-line bg-black px-3 py-2 text-sm text-paper placeholder:text-mist/60 focus:border-cyan focus:outline-none; }
+  .label { @apply mb-1 block text-sm text-mist; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-cyan text-black hover:bg-cyan-soft; }
+  .btn-ghost { @apply btn border border-line text-paper hover:border-cyan/60 hover:text-cyan; }
+  .btn-danger { @apply btn border border-bad/40 text-bad hover:bg-bad/10; }
+  .link { @apply text-cyan underline-offset-2 hover:underline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes toast-in { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+.toast-in { animation: toast-in 220ms ease-out; }
